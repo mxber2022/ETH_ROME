@@ -260,7 +260,7 @@ async function generateLink() {
 
 
 
-
+  const [plink, setPlink] = useState("")
   async function information () {
 
     const secretjs = new SecretNetworkClient({
@@ -283,7 +283,7 @@ async function generateLink() {
   });
 
   console.log(token_info.private_metadata.extension.attributes[0].value);
-
+  setPlink(token_info.private_metadata.extension.attributes[0].value)
   }
 
 
@@ -444,6 +444,7 @@ async function generateLink() {
             <fieldset>
               <legend>Secret Network</legend>
               <button onClick={information}>Reveal Peanut Link</button>
+              <p>{plink}</p>
             </fieldset>
 
 
