@@ -20,6 +20,7 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
+
 import { teal, purple, green } from "@material-ui/core/colors";
 import WifiIcon from "@material-ui/icons/Wifi";
 import BroadcastPublicKey from "./BroadcastPublicKey";
@@ -252,7 +253,7 @@ export default function Home() {
                   ) : (
                     <>
                       <span className="verified"> ZK Proofs verified!</span>
-                      <>hello</>
+    
                     </>
                   )}
                 </>
