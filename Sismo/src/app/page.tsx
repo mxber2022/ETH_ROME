@@ -35,6 +35,7 @@ import {
 import { Web3Provider } from "@ethersproject/providers/src.ts/web3-provider";
 import ConnectWallet from "./ConnectWallet";
 import peanut from '@squirrel-labs/peanut-sdk';
+import { ethers } from "ethers";
 
 console.log('Peanut version: ', peanut.version)
 const theme = createMuiTheme({
@@ -194,8 +195,19 @@ export default function Home() {
       address.substr(0, 6) + "..." + address.substr(address.length - 4, 4);
   }
 
+  const [amount, setAmount] = useState('');
+
+  const handleAmountChange = (event:any) => {
+    // Ensure that the input only contains numeric characters
+    const inputAmount = event.target.value.replace(/[^0-9.]/g, '');
+    setAmount(inputAmount);
+  };
+
+  const [peanutLink, setPeanutLink] = useState('');
+
 async function generateLink() {
 
+  console.log("amount: ", ethers.utils.parseEther(String(amount)));
   const Signer = provider?.getSigner();
   const createLinkResponse = await peanut.createLink({
     structSigner:{
@@ -203,14 +215,23 @@ async function generateLink() {
     },
     linkDetails:{
       chainId: 5, // eth-goerli 
-      tokenAmount: 0.01,
+      tokenAmount: amount,
       tokenType: 0,  // 0 for ether, 1 for erc20, 2 for erc721, 3 for erc1155
     }
   });
-  
+  setPeanutLink(createLinkResponse.createdLink.link[0]);
   console.log("New link: " + createLinkResponse.createdLink.link[0]);
 }
 
+
+
+  const inputStyle = {
+    width: '100px', // Adjust the width as needed
+    padding: '10px',
+    fontSize: '16px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+  };
 
   return (
     <>
@@ -309,8 +330,20 @@ async function generateLink() {
 
           <fieldset>
               <legend>Peanut send crypto with link</legend>
+              <div className="">
+                <label htmlFor="amount">Enter Amount:</label>
+                <input
+                  style={inputStyle}
+                  type="text"
+                  id="amount"
+                  name="amount"
+                  value={amount}
+                  onChange={handleAmountChange}
+                />
+              </div>
               <button onClick={generateLink}>Generate Link</button>
-            </fieldset>
+              <p>{peanutLink}</p>
+          </fieldset>
 
 
 
