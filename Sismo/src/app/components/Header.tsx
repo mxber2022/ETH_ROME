@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <>
       <h2>
-        <b> Sismo Connect: Built at ETH Rome</b>
+        <b>Project ETA: Built at ETH Rome</b>
       </h2>
     </>
   );
