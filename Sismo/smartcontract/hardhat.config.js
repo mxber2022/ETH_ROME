@@ -29,7 +29,7 @@ module.exports = {
         network: "gnosis-testnet",
         chainId: 10200,
         urls: {
-          apiURL: "https://eth-goerli.blockscout.com/api",
+          apiURL: "https://gnosis-chiado.blockscout.com/api",
           browserURL: '',
         },
       },
