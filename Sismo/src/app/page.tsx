@@ -36,6 +36,7 @@ import { Web3Provider } from "@ethersproject/providers/src.ts/web3-provider";
 import ConnectWallet from "./ConnectWallet";
 import peanut from '@squirrel-labs/peanut-sdk';
 import { ethers } from "ethers";
+import { AvatarResolver, utils as avtUtils } from '@ensdomains/ens-avatar';
 
 console.log('Peanut version: ', peanut.version)
 const theme = createMuiTheme({
@@ -233,6 +234,32 @@ async function generateLink() {
     borderRadius: '4px',
   };
 
+
+  const [nameResolved, setNameResolved] = useState("")
+  const [uri, setAvaURI] = useState("")
+
+  useEffect(()=> {
+    if(address!=='') {
+      ENS_ETH();
+    }
+    
+  }, [address])
+
+  async function ENS_ETH() {
+    const tempProvider = new ethers.providers.JsonRpcProvider("https://goerli.infura.io/v3/e96abcff2f494bcd81fadc53c8fd6ac9");
+    const add =  await tempProvider.lookupAddress(address);
+    setNameResolved(add);
+    console.log("resolveNames: ", add);
+
+    const avt = new AvatarResolver(tempProvider);
+    const avatarURI = await avt.getAvatar(add);
+    console.log("AVA URI: ", avatarURI);
+    setAvaURI(avatarURI);
+  }
+
+
+
+
   return (
     <>
       <main className="main">
@@ -319,6 +346,11 @@ async function generateLink() {
               <ConnectWallet setAddress={setAddress} setProvider={setProvider} />
             </fieldset>
             <Typography>{addressDisplay}</Typography>
+            
+            <p>{nameResolved}</p>
+            {
+            uri==""? <></>:<img className='AVA-URI' src={uri} alt="" width={25}/>
+            }
           </Toolbar>
         </AppBar>
 
