@@ -67,7 +67,10 @@ export default function Home() {
                   {Boolean(error) ? (
                     <span className="error"> Error verifying ZK Proofs: {error} </span>
                   ) : (
-                    <span className="verified"> ZK Proofs verified!</span>
+                    <>
+                      <span className="verified"> ZK Proofs verified!</span>
+                      <>hello</>
+                    </>
                   )}
                 </>
               )}

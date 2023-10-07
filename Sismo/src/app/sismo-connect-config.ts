@@ -2,7 +2,18 @@ import { ClaimType, AuthType, SignatureRequest, AuthRequest, ClaimRequest, Sismo
 
 export { ClaimType, AuthType };
 export const CONFIG: SismoConnectConfig = {
-  appId: "0x7745d6823deb72b4fb72903eb6ea6878"
+  appId: "0x7745d6823deb72b4fb72903eb6ea6878",
+  vault: {
+    // For development purposes insert the Data Sources that you want to impersonate
+    // Never use this in production
+    impersonate: [
+      // EVM Data Sources
+      "0x7199D548f1B30EA083Fe668202fd5E621241CC89",
+      // Github Data Source
+      "github:0xHacker",
+    ],
+  },
+  displayRawResponse: false,
 };
 
 // ownership prove: of a Data Source (Wallet, Twitter, Github, Telegram, etc.)
@@ -12,6 +23,7 @@ export const AUTHS: AuthRequest[] = [
   // full docs: https://docs.sismo.io/sismo-docs/build-with-sismo-connect/technical-documentation/vault-and-proof-identifiers
   { authType: AuthType.VAULT },
   { authType: AuthType.EVM_ACCOUNT },
+  { authType: AuthType.GITHUB },
   //{ authType: AuthType.GITHUB, isOptional: true },
   //{ authType: AuthType.TWITTER, isOptional: true },
   //{ authType: AuthType.TELEGRAM, userId: "875608110", isOptional: true },
@@ -27,6 +39,7 @@ export const CLAIMS: ClaimRequest[] = [
     groupId: "0xda1c3726426d5639f4c6352c2c976b87", // impersonated github:dhadrien has 1 contribution, eligible
     isOptional: true,
   },
+  
 
   {
     // claim ENS DAO Voters Data Group membership: https://factory.sismo.io/groups-explorer?search=0x85c7ee90829de70d0d51f52336ea4722
