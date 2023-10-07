@@ -216,4 +216,19 @@ input:focus {
   border-color: red !important;
 }
 
+.makeStyles-loadSaveButton-12 {
+  display: none !important;
+}
 
+#message-input {
+  background-color: white !important;
+  color: #000 !important;
+}
+
+#select-recipient-label{
+  background-color: white !important;
+  color: #000 !important;
+}
+#MuiSvgIcon-root {
+  color: white !important;
+}
