@@ -201,3 +201,12 @@ input:focus {
     align-items: center;
     margin-bottom: 2rem;
 }
+
+.MuiAppBar-colorPrimary{
+  background-color: #000000 !important;
+}
+
+.MuiButton-containedPrimary {
+  color: #fff;
+
+}

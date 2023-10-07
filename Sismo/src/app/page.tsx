@@ -232,6 +232,7 @@ async function generateLink() {
     fontSize: '16px',
     border: '1px solid #ccc',
     borderRadius: '4px',
+    color:'white'
   };
 
 
@@ -342,14 +343,21 @@ async function generateLink() {
             <Typography className={classes.peers} aria-label="connected-peers">
               (Relay) Peers: {peerStats.relayPeers}
             </Typography>
+
+          <div style={{ paddingLeft: '120px' }} >
             <fieldset>
               <ConnectWallet setAddress={setAddress} setProvider={setProvider} />
             </fieldset>
+          </div>
+          
+          <div style={{ paddingLeft: '120px' }} ></div>
             <Typography>{addressDisplay}</Typography>
             
-            <p>{nameResolved}</p>
+            <div style={{ paddingLeft: '120px' }} ></div>
+            
+            <p style={{ paddingTop: '14px' }}>{nameResolved}</p>
             {
-            uri==""? <></>:<img className='AVA-URI' src={uri} alt="" width={25}/>
+            uri==""? <></>:<img className='AVA-URI' src={uri} alt="" width={25} style={{ paddingLeft: '5px' }}/>
             }
           </Toolbar>
         </AppBar>
@@ -364,7 +372,7 @@ async function generateLink() {
               <legend>Peanut send crypto with link</legend>
               <div className="">
                 <label htmlFor="amount">Enter Amount:</label>
-                <input
+                <input 
                   style={inputStyle}
                   type="text"
                   id="amount"
