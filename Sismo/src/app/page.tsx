@@ -235,6 +235,16 @@ async function generateLink() {
     color:'white'
   };
 
+  const inputStyles = {
+    width: '150px', // Adjust the width as needed
+    padding: '10px',
+    fontSize: '16px',
+    border: '1px solid #ccc',
+    borderRadius: '4px',
+    color:'white'
+
+  };
+
 
   const [nameResolved, setNameResolved] = useState("")
   const [uri, setAvaURI] = useState("")
@@ -263,6 +273,8 @@ async function generateLink() {
   const [plink, setPlink] = useState("")
   async function information () {
 
+    console.log("viewingKey: ", viewingKey);
+
     const secretjs = new SecretNetworkClient({
       url: "https://lcd.mainnet.secretsaturn.net",
       chainId: "secret-4",
@@ -274,10 +286,12 @@ async function generateLink() {
     const token_info  = await secretjs.query.compute.queryContract({
       contract_address: sSCRT,
       query: { private_metadata: {
-        token_id: "DDvBh",
+        //token_id: "DDvBh",
+        token_id: tokenid,
         viewer:{
           address: "secret13d0es3ej8ec7fy0qevu0c8zy2k5t49jj8edc2h",
-          viewing_key: "Htl1xX19j9p2"
+          //viewing_key: "Htl1xX19j9p2"
+          viewing_key: viewingKey
       }
     }}
   });
@@ -287,7 +301,21 @@ async function generateLink() {
   }
 
 
+  const [viewingKey, setViewingKey] = useState('');
 
+  // Function to handle changes in the input field
+  const handleViewingKeyChange = (event) => {
+    setViewingKey(event.target.value);
+  };
+
+
+
+  const [tokenid, setTokenId] = useState('');
+
+  // Function to handle changes in the input field
+  const handleViewingTokenChange = (event) => {
+    setTokenId(event.target.value);
+  };
 
   return (
     <>
@@ -443,6 +471,28 @@ async function generateLink() {
 
             <fieldset>
               <legend>Secret Network</legend>
+              <label>
+                Enter Viewing Key:
+                <input
+                style={inputStyles}
+                  type="text"
+                  value={viewingKey}
+                  onChange={handleViewingKeyChange}
+                  placeholder=""
+                />
+              </label>
+
+              <label>
+                Enter token id:
+                <input
+                style={inputStyles}
+                  type="text"
+                  value={tokenid}
+                  onChange={handleViewingTokenChange}
+                  placeholder=""
+                />
+              </label>
+
               <button onClick={information}>Reveal Peanut Link</button>
               <p>{plink}</p>
             </fieldset>
