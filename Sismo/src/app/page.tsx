@@ -34,7 +34,9 @@ import {
 } from "./waku";
 import { Web3Provider } from "@ethersproject/providers/src.ts/web3-provider";
 import ConnectWallet from "./ConnectWallet";
+import peanut from '@squirrel-labs/peanut-sdk';
 
+console.log('Peanut version: ', peanut.version)
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -192,7 +194,22 @@ export default function Home() {
       address.substr(0, 6) + "..." + address.substr(address.length - 4, 4);
   }
 
+async function generateLink() {
 
+  const Signer = provider?.getSigner();
+  const createLinkResponse = await peanut.createLink({
+    structSigner:{
+      signer: Signer
+    },
+    linkDetails:{
+      chainId: 5, // eth-goerli 
+      tokenAmount: 0.01,
+      tokenType: 0,  // 0 for ether, 1 for erc20, 2 for erc721, 3 for erc1155
+    }
+  });
+  
+  console.log("New link: " + createLinkResponse.createdLink.link[0]);
+}
 
 
   return (
@@ -277,22 +294,29 @@ export default function Home() {
             <Typography className={classes.peers} aria-label="connected-peers">
               (Relay) Peers: {peerStats.relayPeers}
             </Typography>
-            <Typography variant="h6" className={classes.title}>
-              Ethereum Private Message
-            </Typography>
+            <fieldset>
+              <ConnectWallet setAddress={setAddress} setProvider={setProvider} />
+            </fieldset>
             <Typography>{addressDisplay}</Typography>
           </Toolbar>
         </AppBar>
 
         <div className={classes.container}>
           <main className={classes.main}>
-            <fieldset>
-              <legend>Wallet</legend>
-              <ConnectWallet
-                setAddress={setAddress}
-                setProvider={setProvider}
-              />
+            
+
+
+
+          <fieldset>
+              <legend>Peanut send crypto with link</legend>
+              <button onClick={generateLink}>Generate Link</button>
             </fieldset>
+
+
+
+
+
+
             <fieldset>
               <legend>Encryption Key Pair</legend>
               <KeyPairHandling
