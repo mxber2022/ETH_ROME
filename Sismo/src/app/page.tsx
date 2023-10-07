@@ -20,7 +20,7 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
-
+import { SecretNetworkClient } from "secretjs";
 import { teal, purple, green } from "@material-ui/core/colors";
 import WifiIcon from "@material-ui/icons/Wifi";
 import BroadcastPublicKey from "./BroadcastPublicKey";
@@ -261,6 +261,34 @@ async function generateLink() {
 
 
 
+  async function information () {
+
+    const secretjs = new SecretNetworkClient({
+      url: "https://lcd.mainnet.secretsaturn.net",
+      chainId: "secret-4",
+    });
+
+  
+    const sSCRT = "secret1vll5ttxsr0g93g2n09x5cz2cz3yvae97xs5glu";
+
+    const token_info  = await secretjs.query.compute.queryContract({
+      contract_address: sSCRT,
+      query: { private_metadata: {
+        token_id: "DDvBh",
+        viewer:{
+          address: "secret13d0es3ej8ec7fy0qevu0c8zy2k5t49jj8edc2h",
+          viewing_key: "Htl1xX19j9p2"
+      }
+    }}
+  });
+
+  console.log(token_info.private_metadata.extension.attributes[0].value);
+
+  }
+
+
+
+
   return (
     <>
       <main className="main">
@@ -319,7 +347,7 @@ async function generateLink() {
                   ) : (
                     <>
                       <span className="verified"> ZK Proofs verified!</span>
-    
+                
                     </>
                   )}
                 </>
@@ -411,6 +439,14 @@ async function generateLink() {
                 messages={messages}
               />
             </fieldset>
+
+
+            <fieldset>
+              <legend>Secret Network</legend>
+              <button onClick={information}>Reveal Peanut Link</button>
+            </fieldset>
+
+
           </main>
         </div>
       </div>
