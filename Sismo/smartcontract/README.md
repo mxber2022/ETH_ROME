@@ -18,5 +18,5 @@ npx hardhat verify --network <network> <contractAddress>
 
 `#` Contract deployed address
 
-GnosisTestnet - 0xb5dD8f6770593bC05Dc5B336F809695Ee481c991
+GnosisTestnet - 0xb5dD8f6770593bC05Dc5B336F809695Ee481c991 <br/>
 BaseGoerli - 0x36a20007846639De19d63C3da976f8b5Ea1BfeDc
