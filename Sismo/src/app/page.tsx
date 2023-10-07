@@ -405,7 +405,7 @@ async function generateLink() {
             </fieldset>
             <fieldset>
               <legend>Messaging</legend>
-              <Messaging
+              <Messaging 
                 recipients={publicKeys}
                 waku={waku}
                 messages={messages}

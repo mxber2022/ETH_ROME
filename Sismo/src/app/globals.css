@@ -210,3 +210,10 @@ input:focus {
   color: #fff;
 
 }
+
+.MuiInputBase-input {
+  color: white !important;
+  border-color: red !important;
+}
+
+
