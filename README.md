@@ -72,6 +72,10 @@ https://api.studio.thegraph.com/query/50144/soulbound/0.1
 
 https://twitter.com/The_Game_2030/status/1710885983283991014
 
+## Keyko
+
+We are solving the issue of misdirected funds by gatekeeping the dashboard utilising Sismo to only unlock peanut link generation if the profile meets the security checks. 
+
 ## FAQs
 
 1) Why is this necessary?
