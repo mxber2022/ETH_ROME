@@ -1,0 +1,8 @@
+{
+  "base-testnet": {
+    "SoulBound": {
+      "address": "0x36a20007846639De19d63C3da976f8b5Ea1BfeDc",
+      "startBlock": 10757774
+    }
+  }
+}
