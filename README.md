@@ -22,7 +22,7 @@
   <a href="#Inspirations">Inspirations</a> •
 </p>
 
-<img width="1084" src="Assets/User Flow Template.jpg">
+<img width="1084" src="Assets/Screenshot 2023-10-08 at 01.07.01.png">
 
 ## Key Features
 
@@ -36,6 +36,8 @@
 * ENS integration for sponsors to quickly find prize winners and vice-versa
   - Minimising wrong contract address and misdirecting funds
 * Gnosis and Base to hold SBTs for EVM catering
+
+<img width="1084" src="Assets/User Flow Template.jpg">
 
 ## Short Description
 
