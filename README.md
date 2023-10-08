@@ -36,6 +36,8 @@
 * ENS integration for sponsors to quickly find prize winners and vice-versa
   - Minimising wrong contract address and misdirecting funds
 * Gnosis and Base to hold SBTs for EVM catering
+* Custom SubGraph for sponsors to keep track of all deployed SoulBoundTokens
+  - Essentially for sponsors to monitor all historical bounty awards
 
 <img width="1084" src="Assets/User Flow Template.jpg">
 
@@ -57,6 +59,19 @@ Identification of a common pain-point in the process of onboarding developers in
 
 5) The user goes through the peanut claiming procedure and receives their money.
 
+## Contract Deployment Details
+
+https://goerli.basescan.org/address/0x36a20007846639De19d63C3da976f8b5Ea1BfeDc
+https://gnosis-chiado.blockscout.com/address/0xb5dD8f6770593bC05Dc5B336F809695Ee481c991
+
+## SubGraph
+
+https://api.studio.thegraph.com/query/50144/soulbound/0.1
+
+## Tweet
+
+https://twitter.com/The_Game_2030/status/1710885983283991014
+
 ## FAQs
 
 1) Why is this necessary?
@@ -67,12 +82,9 @@ Businesses manage many invoices, it’s not unknown for bad actors to spoof invo
 
 Firstly, there is an adaptable KYC procedure whereby by configuring sismo, sponsors can enforce the targeted recipient to have specific web2 account or other bespoke requirements. There is also the notable difference that it utilises a Peer-to-Peer network to broadcast the peanut link as opposed to a direct transaction. 
 
-4) Why is it conducive that this solution involves so much privacy maintaining strategies?
-   
-
 3) What is the plan going forward?
 
-
+Combine the peanut link delivery mechanisms to achieve a stronger more secure system. Whereby the viewkey and tokenid from the secret network NFT is passed through Waku.
 
 ---
 
